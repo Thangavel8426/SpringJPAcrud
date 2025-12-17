@@ -5,6 +5,7 @@ import com.example.demoJPA.service.StudentService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.cdi.Eager;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,4 +43,19 @@ public class Studentcontroller {
     public String deleteStudent(@PathVariable int rollno){
          return s.deleteStudent(rollno);
     }
+    @DeleteMapping("Students/deleteall")
+    public String deleteall(Student stu){
+        s.deleteall(stu);
+        return "DB is cleared";
+    }
+    @GetMapping("Students/technology/{tech}")
+    public List<Student> getStudentByTechnology(@PathVariable("tech") String str){
+        return s.getStudentByTechnology(str);
+    }
+    @PostMapping("Students/fliter")
+    public List<Student>getStudentByageandTechnology(@Param("age") int age,
+                                                     @Param("technology") String technology){
+        return s.getStudentByAgeAndtecnlogy(age,technology);
+    }
+
 }

@@ -38,4 +38,14 @@ public class StudentService {
     }
 
 
+    public void deleteall(Student stu) {
+        sr.deleteAll();
+    }
+
+    public List<Student> getStudentByTechnology(String str) {
+         return sr.findBytechnology(str);
+    }
+    public List<Student> getStudentByAgeAndtecnlogy(int age,String tech){
+         return sr.findByAgeAndTechnology(age,tech);
+    }
 }
